@@ -1053,6 +1053,7 @@
 #include "RE/H/hkbBehaviorGraphData.h"
 #include "RE/H/hkbBehaviorGraphStringData.h"
 #include "RE/H/hkbBindable.h"
+#include "RE/H/hkbBlenderGenerator.h"
 #include "RE/H/hkbCharacter.h"
 #include "RE/H/hkbCharacterControllerSetup.h"
 #include "RE/H/hkbCharacterData.h"

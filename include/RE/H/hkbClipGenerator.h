@@ -59,8 +59,14 @@ namespace RE
 		void Deactivate(const hkbContext& a_context) override;                // 07
 
 		// override (hkbGenerator)
-		void Generate(const hkbContext& a_context) override;    // 17
-		void UpdateSync(const hkbContext& a_context) override;  // 19
+		void Generate(
+			const hkbContext& a_context,
+			const hkbGeneratorOutput** a_activeChildrenOutput,
+			hkbGeneratorOutput& a_output,
+			float a_timeOffset = 0.0f) const override;                       // 17
+		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
+		void SetLocalTime(float a_time) override;                           // 1A
+		void StartEcho(void) override;                                      // 1B
 
 		// members
 		hkStringPtr                           animationName;                       // 048

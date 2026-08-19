@@ -32,6 +32,8 @@ namespace RE
 			kForceTransitionToStartState = 2
 		};
 
+		class TransitionInfoArray;
+
 		class StateInfo : public hkbBindable
 		{
 		public:
@@ -41,16 +43,19 @@ namespace RE
 			~StateInfo() override;  // 00
 
 			// members
-			std::uint64_t unk30;  // 30
-			std::uint64_t unk38;  // 38
-			std::uint64_t unk40;  // 40
-			std::uint64_t unk48;  // 48
-			std::uint64_t unk50;  // 50
-			std::uint64_t unk58;  // 58
-			std::uint64_t unk60;  // 60
-			std::uint64_t unk68;  // 68
-			std::uint64_t unk70;  // 70
+			hkArray<hkRefVariant>           listeners;          // 30
+			hkRefVariant                    enterNotifyEvents;  // 40
+			hkRefVariant                    exitNotifyEvents;   // 48
+			hkRefPtr<TransitionInfoArray>  transitions;        // 50
+			hkRefPtr<hkbGenerator>          generator;          // 58
+			hkStringPtr                     name;               // 60
+			std::int32_t                    stateID;            // 68
+			float                           probability;        // 6C
+			bool                            enable;             // 70
+			std::uint8_t                    pad71[7];            // 71
 		};
+		static_assert(offsetof(StateInfo, generator) == 0x58);
+		static_assert(offsetof(StateInfo, stateID) == 0x68);
 		static_assert(sizeof(StateInfo) == 0x78);
 
 		class TransitionInfoArray : public hkReferencedObject
@@ -88,10 +93,14 @@ namespace RE
 		void     Unk_11(void) override;                                                                             // 11
 		void     Unk_12(void) override;                                                                             // 12
 		void     Unk_14(void) override;                                                                             // 14
-		void     Generate(const hkbContext& a_context) override;                                                    // 17
-		void     Unk_18(void) override;                                                                             // 18 - { return 1; }
-		void     UpdateSync(const hkbContext& a_context) override;                                                  // 19
-		void     Unk_1B(void) override;                                                                             // 1B - { echoNextUpdate = true; }
+		void     Generate(
+			const hkbContext& a_context,
+			const hkbGeneratorOutput** a_activeChildrenOutput,
+			hkbGeneratorOutput& a_output,
+			float a_timeOffset = 0.0f) const override;                                                               // 17
+		bool     CanRecycleOutput(void) const override;                                                             // 18 - { return true; }
+		void     UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;                              // 19
+		void     StartEcho(void) override;                                                                          // 1B
 
 		// members
 		hkbEvent                                                   eventToSendWhenStateOrTransitionChanges;  // 048

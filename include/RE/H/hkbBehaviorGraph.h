@@ -32,10 +32,14 @@ namespace RE
 		void     Deactivate(const hkbContext& a_context) override;                                                  // 07
 		void     Unk_09(void) override;                                                                             // 09
 		void     Unk_0C(void) override;                                                                             // 0C
-		void     Unk_16(void) override;                                                                             // 16 - { return 1; }
-		void     Generate(const hkbContext& a_context) override;                                                    // 17
-		void     Unk_18(void) override;                                                                             // 18 - { return 1; }
-		void     UpdateSync(const hkbContext& a_context) override;                                                  // 19
+		bool     IsGraph(void) const override;                                                                      // 16 - { return true; }
+		void     Generate(
+			const hkbContext& a_context,
+			const hkbGeneratorOutput** a_activeChildrenOutput,
+			hkbGeneratorOutput& a_output,
+			float a_timeOffset = 0.0f) const override;                                                               // 17
+		bool     CanRecycleOutput(void) const override;                                                             // 18 - { return true; }
+		void     UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;                              // 19
 
 		// members
 		REX::EnumSet<VariableMode, std::uint8_t> variableMode;                     // 048

@@ -32,8 +32,8 @@ namespace RE
 		virtual void Unk_12(void);                                           // 12 - { return; }
 		virtual void Unk_13(void);                                           // 13 - { return 0; }
 		virtual void Unk_14(void);                                           // 14 - { return; }
-		virtual void Unk_15(void);                                           // 15 - { return 0; }
-		virtual void Unk_16(void);                                           // 16 - { return 0; }
+		virtual bool IsGenerator(void) const;                                // 15 - { return false; }
+		virtual bool IsGraph(void) const;                                    // 16 - { return false; }
 
 		enum class GetChildrenFlagBits
 		{
