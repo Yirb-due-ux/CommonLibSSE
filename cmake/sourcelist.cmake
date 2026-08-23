@@ -1051,6 +1051,10 @@ set(SOURCES
 	include/RE/H/hkbBehaviorGraphData.h
 	include/RE/H/hkbBehaviorGraphStringData.h
 	include/RE/H/hkbBindable.h
+	include/RE/H/hkbBlendCurveUtils.h
+	include/RE/H/hkbBlenderGenerator.h
+	include/RE/H/hkbBlendingTransitionEffect.h
+	include/RE/H/hkbBlendingTransitionEffectUtils.h
 	include/RE/H/hkbCharacter.h
 	include/RE/H/hkbCharacterControllerSetup.h
 	include/RE/H/hkbCharacterData.h
@@ -1069,6 +1073,7 @@ set(SOURCES
 	include/RE/H/hkbRigidBodySetup.h
 	include/RE/H/hkbShapeSetup.h
 	include/RE/H/hkbStateMachine.h
+	include/RE/H/hkbTransitionEffect.h
 	include/RE/H/hkp3AxisSweep.h
 	include/RE/H/hkpAabbPhantom.h
 	include/RE/H/hkpAction.h
@@ -2049,6 +2054,8 @@ set(SOURCES
 	src/RE/H/hkReferencedObject.cpp
 	src/RE/H/hkStringPtr.cpp
 	src/RE/H/hkVector4.cpp
+	src/RE/H/hkbBlendCurveUtils.cpp
+	src/RE/H/hkbBlendingTransitionEffectUtils.cpp
 	src/RE/H/hkpAabbPhantom.cpp
 	src/RE/H/hkpBroadPhase.cpp
 	src/RE/H/hkpCdBody.cpp

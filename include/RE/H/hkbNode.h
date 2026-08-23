@@ -30,7 +30,7 @@ namespace RE
 		virtual void Unk_10(void);                                           // 10 - { return; }
 		virtual void Unk_11(void);                                           // 11 - { return; }
 		virtual void Unk_12(void);                                           // 12 - { return; }
-		virtual void Unk_13(void);                                           // 13 - { return 0; }
+		virtual bool IsTransitionEffect(void) const;                          // 13 - { return false; }
 		virtual void Unk_14(void);                                           // 14 - { return; }
 		virtual bool IsGenerator(void) const;                                // 15 - { return false; }
 		virtual bool IsGraph(void) const;                                    // 16 - { return false; }
