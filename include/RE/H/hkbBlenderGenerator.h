@@ -6,6 +6,8 @@
 
 namespace RE
 {
+	class hkbBoneWeightArray;
+
 	class hkbBlenderGeneratorChild : public hkbBindable
 	{
 	public:
@@ -14,12 +16,13 @@ namespace RE
 		~hkbBlenderGeneratorChild() override;  // 00
 
 		// members
-		hkRefPtr<hkbGenerator> generator;             // 30
-		hkRefVariant           boneWeights;           // 38
-		float                  weight;                // 40
-		float                  worldFromModelWeight;  // 44
-		std::uint64_t          pad48;                 // 48
+		hkRefPtr<hkbGenerator>       generator;             // 30
+		hkRefPtr<hkbBoneWeightArray> boneWeights;           // 38
+		float                        weight;                // 40
+		float                        worldFromModelWeight;  // 44
+		std::uint64_t                pad48;                 // 48
 	};
+	static_assert(offsetof(hkbBlenderGeneratorChild, boneWeights) == 0x38);
 	static_assert(sizeof(hkbBlenderGeneratorChild) == 0x50);
 
 	class hkbBlenderGenerator : public hkbGenerator
