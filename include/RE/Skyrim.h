@@ -1068,6 +1068,7 @@
 #include "RE/H/hkbEvent.h"
 #include "RE/H/hkbEventBase.h"
 #include "RE/H/hkbGenerator.h"
+#include "RE/H/hkbGeneratorOutput.h"
 #include "RE/H/hkbModifierGenerator.h"
 #include "RE/H/hkbNode.h"
 #include "RE/H/hkbNodeInfo.h"
