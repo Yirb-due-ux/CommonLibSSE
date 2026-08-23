@@ -3,15 +3,11 @@
 #include "RE/H/hkQsTransform.h"
 #include "RE/H/hkaDefaultAnimationControl.h"
 #include "RE/H/hkbContext.h"
-#include "RE/H/hkbEventBase.h"
+#include "RE/H/hkbEventProperty.h"
 #include "RE/H/hkbGenerator.h"
 
 namespace RE
 {
-	class hkbEventProperty : public hkbEventBase
-	{
-	};
-
 	class hkClipTrigger
 	{
 	public:
@@ -60,13 +56,13 @@ namespace RE
 
 		// override (hkbGenerator)
 		void Generate(
-			const hkbContext& a_context,
+			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
-			hkbGeneratorOutput& a_output,
-			float a_timeOffset = 0.0f) const override;                       // 17
+			hkbGeneratorOutput&        a_output,
+			float                      a_timeOffset = 0.0f) const override;                               // 17
 		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
-		void SetLocalTime(float a_time) override;                           // 1A
-		void StartEcho(void) override;                                      // 1B
+		void SetLocalTime(float a_time) override;                                    // 1A
+		void StartEcho(void) override;                                               // 1B
 
 		// members
 		hkStringPtr                           animationName;                       // 048
