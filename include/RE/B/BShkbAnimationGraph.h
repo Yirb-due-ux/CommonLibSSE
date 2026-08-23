@@ -77,6 +77,17 @@ namespace RE
 			GetEventSource<T>()->RemoveEventSink(a_eventSink);
 		}
 
+#ifndef SKYRIM_SUPPORT_AE
+		// Sends an event only to this graph instead of broadcasting through its graph manager.
+		// The relocation is verified against Skyrim SE 1.5.97.
+		[[nodiscard]] bool NotifyExact(const BSFixedString& a_eventName)
+		{
+			using func_t = decltype(&BShkbAnimationGraph::NotifyExact);
+			static REL::Relocation<func_t> func{ REL::ID(62646) };
+			return func(this, a_eventName);
+		}
+#endif
+
 		bool GetGraphVariableBool(const BSFixedString& a_variableName, bool& a_out) const
 		{
 			using func_t = decltype(&BShkbAnimationGraph::GetGraphVariableBool);
