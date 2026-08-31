@@ -239,6 +239,7 @@ set(SOURCES
 	include/RE/B/BSCubeMapCamera.h
 	include/RE/B/BSCullingJob.h
 	include/RE/B/BSCullingProcess.h
+	include/RE/B/BSCyclicBlendTransitionGenerator.h
 	include/RE/B/BSDirectInputManager.h
 	include/RE/B/BSDismemberSkinInstance.h
 	include/RE/B/BSDistantTreeShaderProperty.h
@@ -1372,6 +1373,8 @@ set(SOURCES
 	include/RE/M/MovementControllerAI.h
 	include/RE/M/MovementControllerNPC.h
 	include/RE/M/MovementHandler.h
+	include/RE/M/MovementMessage.h
+	include/RE/M/MovementMessageFreezeDirection.h
 	include/RE/M/MoviePlayer.h
 	include/RE/M/MultiBoundMarkerData.h
 	include/RE/N/NativeFunction.h
