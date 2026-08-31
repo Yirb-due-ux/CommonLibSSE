@@ -2071,6 +2071,7 @@ set(SOURCES
 	src/RE/H/hkReferencedObject.cpp
 	src/RE/H/hkStringPtr.cpp
 	src/RE/H/hkVector4.cpp
+	src/RE/H/hkbBehaviorGraph.cpp
 	src/RE/H/hkbBlendCurveUtils.cpp
 	src/RE/H/hkbBlendingTransitionEffectUtils.cpp
 	src/RE/H/hkpAabbPhantom.cpp

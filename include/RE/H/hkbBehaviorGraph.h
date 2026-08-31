@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
+#include "RE/H/hkPointerMap.h"
 #include "RE/H/hkRefVariant.h"
 #include "RE/H/hkbGenerator.h"
 #include "RE/H/hkbNodeInfo.h"
@@ -41,6 +42,19 @@ namespace RE
 		bool     CanRecycleOutput(void) const override;                                                             // 18 - { return true; }
 		void     UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;                              // 19
 
+		// Returns an existing runtime clone, or the input node when no clone is required or mapped.
+		[[nodiscard]] hkbNode* GetNodeClone(hkbNode* a_nodeTemplate) const;
+		// Returns the mapped template for a runtime clone. Non-clone nodes are returned
+		// unchanged; a clone missing from nodeCloneToTemplateMap returns nullptr.
+		[[nodiscard]] hkbNode* GetNodeTemplate(hkbNode* a_nodeClone) const;
+
+		// These map-backed lookups cover the current active-node set. A missing or invalid
+		// entry returns nullptr instead of falling back to activeNodes[0].
+		[[nodiscard]] hkbNodeInfo*       FindNodeInfoByTemplate(hkbNode* a_nodeTemplate);
+		[[nodiscard]] const hkbNodeInfo* FindNodeInfoByTemplate(hkbNode* a_nodeTemplate) const;
+		[[nodiscard]] hkbNodeInfo*       FindNodeInfoByClone(hkbNode* a_nodeClone);
+		[[nodiscard]] const hkbNodeInfo* FindNodeInfoByClone(hkbNode* a_nodeClone) const;
+
 		// members
 		REX::EnumSet<VariableMode, std::uint8_t> variableMode;                     // 048
 		std::uint8_t                             pad49;                            // 049
@@ -54,16 +68,16 @@ namespace RE
 		hkRefPtr<hkbBehaviorGraphData>           data;                             // 088
 		hkRefVariant                             rootGeneratorClone;               // 090
 		NodeList*                                activeNodes;                      // 098
-		hkRefVariant                             activeNodeTemplateToIndexMap;     // 0A0
-		hkRefVariant                             activeNodesChildrenIndices;       // 0A8
+		hkPointerMap<hkbNode*, std::int32_t>*    activeNodeTemplateToIndexMap;     // 0A0 - Template to activeNodes index.
+		hkArray<std::int32_t>*                   activeNodesChildrenIndices;       // 0A8 - Flattened child indices into activeNodes.
 		hkRefVariant                             globalTransitionData;             // 0B0
 		hkRefVariant                             eventIDMap;                       // 0B8
 		hkRefVariant                             attributeIDMap;                   // 0C0
 		hkRefVariant                             variableIDMap;                    // 0C8
 		hkRefVariant                             characterPropertyIDMap;           // 0D0
 		hkRefVariant                             variableValueSet;                 // 0D8
-		hkRefVariant                             nodeTemplateToCloneMap;           // 0E0
-		hkRefVariant                             nodeCloneToTemplateMap;           // 0E8
+		hkPointerMap<hkbNode*, hkbNode*>*        nodeTemplateToCloneMap;           // 0E0
+		hkPointerMap<hkbNode*, hkbNode*>*        nodeCloneToTemplateMap;           // 0E8
 		hkRefVariant                             stateListenerTemplateToCloneMap;  // 0F0
 		hkRefVariant                             nodePartitionInfo;                // 0F8
 		std::int32_t                             numIntermediateOutputs;           // 100
@@ -77,5 +91,10 @@ namespace RE
 		bool                                     updateActiveNodes;                // 12E
 		bool                                     stateOrTransitionChanged;         // 12F
 	};
+	static_assert(offsetof(hkbBehaviorGraph, activeNodes) == 0x98);
+	static_assert(offsetof(hkbBehaviorGraph, activeNodeTemplateToIndexMap) == 0xA0);
+	static_assert(offsetof(hkbBehaviorGraph, activeNodesChildrenIndices) == 0xA8);
+	static_assert(offsetof(hkbBehaviorGraph, nodeTemplateToCloneMap) == 0xE0);
+	static_assert(offsetof(hkbBehaviorGraph, nodeCloneToTemplateMap) == 0xE8);
 	static_assert(sizeof(hkbBehaviorGraph) == 0x130);
 }
