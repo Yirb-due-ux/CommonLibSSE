@@ -116,6 +116,7 @@ set(SOURCES
 	include/RE/B/BGSFootstepManager.h
 	include/RE/B/BGSFootstepSet.h
 	include/RE/B/BGSFormChanges.h
+	include/RE/B/BGSGamebryoSequenceGenerator.h
 	include/RE/B/BGSGrassManager.h
 	include/RE/B/BGSHazard.h
 	include/RE/B/BGSHeadPart.h
@@ -1022,6 +1023,7 @@ set(SOURCES
 	include/RE/H/hkMoppBvTreeShapeBase.h
 	include/RE/H/hkMotionState.h
 	include/RE/H/hkMultiThreadCheck.h
+	include/RE/H/hkPointerMap.h
 	include/RE/H/hkQsTransform.h
 	include/RE/H/hkQuaternion.h
 	include/RE/H/hkRefPtr.h
@@ -1067,6 +1069,7 @@ set(SOURCES
 	include/RE/H/hkbEventBase.h
 	include/RE/H/hkbGenerator.h
 	include/RE/H/hkbGeneratorOutput.h
+	include/RE/H/hkbModifier.h
 	include/RE/H/hkbModifierGenerator.h
 	include/RE/H/hkbNode.h
 	include/RE/H/hkbNodeInfo.h

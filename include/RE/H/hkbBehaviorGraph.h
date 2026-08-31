@@ -28,10 +28,10 @@ namespace RE
 		void     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
 		void     Activate(const hkbContext& a_context) override;                                                    // 04
 		void     Update(const hkbContext& a_context, float a_timestep) override;                                    // 05
-		void     Unk_06(void) override;                                                                             // 06
+		void     HandleEvent(const hkbContext& a_context, hkbEvent& a_event) override;                              // 06
 		void     Deactivate(const hkbContext& a_context) override;                                                  // 07
-		void     Unk_09(void) override;                                                                             // 09
-		void     Unk_0C(void) override;                                                                             // 0C
+		void     GetChildren(GetChildrenFlags a_flags, ChildrenInfo& a_childrenInfo) override;                      // 09
+		hkbNode* CloneNode(hkbBehaviorGraph& a_rootBehavior) const override;                                        // 0C
 		bool     IsGraph(void) const override;                                                                      // 16 - { return true; }
 		void     Generate(
 			const hkbContext& a_context,
