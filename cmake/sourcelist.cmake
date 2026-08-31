@@ -1026,6 +1026,7 @@ set(SOURCES
 	include/RE/H/hkPointerMap.h
 	include/RE/H/hkQsTransform.h
 	include/RE/H/hkQuaternion.h
+	include/RE/H/hkQueue.h
 	include/RE/H/hkRefPtr.h
 	include/RE/H/hkRefVariant.h
 	include/RE/H/hkReferencedObject.h
@@ -1058,6 +1059,7 @@ set(SOURCES
 	include/RE/H/hkbBlenderGenerator.h
 	include/RE/H/hkbBlendingTransitionEffect.h
 	include/RE/H/hkbBlendingTransitionEffectUtils.h
+	include/RE/H/hkbBoolVariableSequencedData.h
 	include/RE/H/hkbCharacter.h
 	include/RE/H/hkbCharacterControllerSetup.h
 	include/RE/H/hkbCharacterData.h
@@ -1067,8 +1069,11 @@ set(SOURCES
 	include/RE/H/hkbContext.h
 	include/RE/H/hkbEvent.h
 	include/RE/H/hkbEventBase.h
+	include/RE/H/hkbEventQueue.h
+	include/RE/H/hkbEventSequencedData.h
 	include/RE/H/hkbGenerator.h
 	include/RE/H/hkbGeneratorOutput.h
+	include/RE/H/hkbIntVariableSequencedData.h
 	include/RE/H/hkbModifier.h
 	include/RE/H/hkbModifierGenerator.h
 	include/RE/H/hkbNode.h
@@ -1076,9 +1081,15 @@ set(SOURCES
 	include/RE/H/hkbProjectData.h
 	include/RE/H/hkbProjectStringData.h
 	include/RE/H/hkbRagdollDriver.h
+	include/RE/H/hkbRealVariableSequencedData.h
 	include/RE/H/hkbRigidBodySetup.h
 	include/RE/H/hkbShapeSetup.h
+	include/RE/H/hkbSequence.h
+	include/RE/H/hkbSequenceInternalState.h
+	include/RE/H/hkbSequenceStringData.h
+	include/RE/H/hkbSequencedData.h
 	include/RE/H/hkbStateMachine.h
+	include/RE/H/hkbSymbolIdMap.h
 	include/RE/H/hkbTransitionEffect.h
 	include/RE/H/hkp3AxisSweep.h
 	include/RE/H/hkpAabbPhantom.h
