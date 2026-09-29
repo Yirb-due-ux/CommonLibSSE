@@ -37,8 +37,6 @@ namespace RE
 
 		class TransitionInfoArray;
 
-		// Verified against Skyrim SE 1.5.97 reflection metadata and the native
-		// 0x48/0x28/0x18 transition, active-transition, and delayed-transition strides.
 		struct TimeInterval
 		{
 			std::int32_t enterEventID;  // 00
@@ -195,16 +193,16 @@ namespace RE
 		void                GetInternalStateUser(const hkbBehaviorGraph& a_rootBehavior, hkReferencedObject& a_internalState) const override;  // 0F
 		void                SetInternalState(const hkReferencedObject& a_internalState) override;                                              // 10
 		void                SetInternalStateUser(
-						   const hkbContext&                                            a_context,
-						   const hkReferencedObject&                                    a_internalState,
-						   hkPointerMap<std::int16_t, const hkbNodeInternalStateInfo*>& a_nodeIdToInternalStateMap) override;  // 11
-		void GetActiveEvents(hkPointerMap<std::int32_t, bool>& a_activeEvents) const override;                                 // 12
-		void GetActiveVariablesSpecial(hkPointerMap<std::int32_t, bool>& a_activeVariables) const override;                    // 14
+			const hkbContext&                                            a_context,
+			const hkReferencedObject&                                    a_internalState,
+			hkPointerMap<std::int16_t, const hkbNodeInternalStateInfo*>& a_nodeIdToInternalStateMap) override;  // 11
+		void GetActiveEvents(hkPointerMap<std::int32_t, bool>& a_activeEvents) const override;                  // 12
+		void GetActiveVariablesSpecial(hkPointerMap<std::int32_t, bool>& a_activeVariables) const override;     // 14
 		void Generate(
 			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
 			hkbGeneratorOutput&        a_output,
-			float                      a_timeOffset = 0.0f) const override;                               // 17
+			float                      a_timeOffset = 0.0f) const override;          // 17
 		bool CanRecycleOutput(void) const override;                                  // 18 - { return true; }
 		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
 		void StartEcho(void) override;                                               // 1B

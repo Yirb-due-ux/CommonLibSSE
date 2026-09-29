@@ -14,9 +14,7 @@ namespace RE
 		};
 
 #ifndef SKYRIM_SUPPORT_AE
-		// Evaluates a normalized transition fraction and clamps the result to [0, 1].
-		// The relocation is verified against Skyrim SE 1.5.97.
-		[[nodiscard]] static float EvaluateBlendCurve(BlendCurve a_blendCurve, float a_time);
+		static float EvaluateBlendCurve(BlendCurve a_blendCurve, float a_time);
 #endif
 	};
 	static_assert(sizeof(hkbBlendCurveUtils::BlendCurve) == 0x4);

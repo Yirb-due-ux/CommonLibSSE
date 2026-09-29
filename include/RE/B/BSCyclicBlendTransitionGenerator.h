@@ -31,39 +31,39 @@ namespace RE
 		void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
 
 		// override (hkbNode)
-		void                              Activate(const hkbContext& a_context) override;                                    // 04
-		void                              Update(const hkbContext& a_context, float a_timestep) override;                    // 05
-		void                              HandleEvent(const hkbContext& a_context, hkbEvent& a_event) override;              // 06
-		void                              Deactivate(const hkbContext& a_context) override;                                  // 07
-		std::int32_t                      GetMaxNumChildren(GetChildrenFlags a_flags) override;                              // 08
-		void                              GetChildren(GetChildrenFlags a_flags, ChildrenInfo& a_childrenInfo) override;      // 09
-		bool                              IsValid(hkStringPtr& a_errorString) const override;                                // 0A
-		BSCyclicBlendTransitionGenerator* CloneNode(hkbBehaviorGraph& a_rootBehavior) const override;  // 0C
+		void                              Activate(const hkbContext& a_context) override;                                // 04
+		void                              Update(const hkbContext& a_context, float a_timestep) override;                // 05
+		void                              HandleEvent(const hkbContext& a_context, hkbEvent& a_event) override;          // 06
+		void                              Deactivate(const hkbContext& a_context) override;                              // 07
+		std::int32_t                      GetMaxNumChildren(GetChildrenFlags a_flags) override;                          // 08
+		void                              GetChildren(GetChildrenFlags a_flags, ChildrenInfo& a_childrenInfo) override;  // 09
+		bool                              IsValid(hkStringPtr& a_errorString) const override;                            // 0A
+		BSCyclicBlendTransitionGenerator* CloneNode(hkbBehaviorGraph& a_rootBehavior) const override;                    // 0C
 
 		// override (hkbGenerator)
 		void Generate(
 			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
 			hkbGeneratorOutput&        a_output,
-			float                      a_timeOffset = 0.0f) const override;              // 17
+			float                      a_timeOffset = 0.0f) const override;          // 17
 		bool CanRecycleOutput() const override;                                      // 18
-		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;    // 19
+		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
 
 		// Skyrim SE 1.5.97 layout. The reflected member names are preserved.
 		// members
-		std::uint8_t                                             pad48[8];                     // 48
-		hkbBlenderGenerator*                                    pBlenderGenerator;            // 50
-		hkbEventBase                                            EventToFreezeBlendValue;      // 58
-		hkbEventBase                                            EventToCrossBlend;            // 68
-		float                                                   fBlendParameter;              // 78
-		float                                                   fTransitionDuration;          // 7C
+		std::uint8_t                                              pad48[8];                     // 48
+		hkbBlenderGenerator*                                      pBlenderGenerator;            // 50
+		hkbEventBase                                              EventToFreezeBlendValue;      // 58
+		hkbEventBase                                              EventToCrossBlend;            // 68
+		float                                                     fBlendParameter;              // 78
+		float                                                     fTransitionDuration;          // 7C
 		REX::EnumSet<hkbBlendCurveUtils::BlendCurve, std::int8_t> eBlendCurve;                  // 80
-		std::uint8_t                                             pad81[15];                    // 81
-		hkbBlenderGenerator*                                    pTransitionBlenderGenerator;  // 90 - Runtime clone of pBlenderGenerator.
-		std::uint8_t                                             pad98[8];                     // 98
-		hkbBlendingTransitionEffect*                            pTransitionEffect;            // A0 - Runtime transition effect.
-		REX::EnumSet<CurrentBlendMode, std::int8_t>              currentMode;                  // A8
-		std::uint8_t                                             padA9[7];                     // A9
+		std::uint8_t                                              pad81[15];                    // 81
+		hkbBlenderGenerator*                                      pTransitionBlenderGenerator;  // 90 - Runtime clone of pBlenderGenerator.
+		std::uint8_t                                              pad98[8];                     // 98
+		hkbBlendingTransitionEffect*                              pTransitionEffect;            // A0 - Runtime transition effect.
+		REX::EnumSet<CurrentBlendMode, std::int8_t>               currentMode;                  // A8
+		std::uint8_t                                              padA9[7];                     // A9
 	};
 	static_assert(offsetof(BSCyclicBlendTransitionGenerator, pBlenderGenerator) == 0x50);
 	static_assert(offsetof(BSCyclicBlendTransitionGenerator, EventToFreezeBlendValue) == 0x58);

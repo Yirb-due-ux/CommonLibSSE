@@ -78,9 +78,7 @@ namespace RE
 		}
 
 #ifndef SKYRIM_SUPPORT_AE
-		// Sends an event only to this graph instead of broadcasting through its graph manager.
-		// The relocation is verified against Skyrim SE 1.5.97.
-		[[nodiscard]] bool NotifyExact(const BSFixedString& a_eventName)
+		bool NotifyExact(const BSFixedString& a_eventName)
 		{
 			using func_t = decltype(&BShkbAnimationGraph::NotifyExact);
 			static REL::Relocation<func_t> func{ REL::ID(62646) };

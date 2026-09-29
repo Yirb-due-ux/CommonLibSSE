@@ -9,6 +9,7 @@
 namespace RE
 {
 	class hkbBehaviorGraphData;
+	class hkbBehaviorGraphInternalState;
 
 	class hkbBehaviorGraph : public hkbGenerator
 	{
@@ -35,25 +36,26 @@ namespace RE
 		hkbNode* CloneNode(hkbBehaviorGraph& a_rootBehavior) const override;                                        // 0C
 		bool     IsGraph(void) const override;                                                                      // 16 - { return true; }
 		void     Generate(
-			const hkbContext& a_context,
+			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
-			hkbGeneratorOutput& a_output,
-			float a_timeOffset = 0.0f) const override;                                                               // 17
-		bool     CanRecycleOutput(void) const override;                                                             // 18 - { return true; }
-		void     UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;                              // 19
+			hkbGeneratorOutput&        a_output,
+			float                      a_timeOffset = 0.0f) const override;          // 17
+		bool CanRecycleOutput(void) const override;                                  // 18 - { return true; }
+		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
 
-		// Returns an existing runtime clone, or the input node when no clone is required or mapped.
-		[[nodiscard]] hkbNode* GetNodeClone(hkbNode* a_nodeTemplate) const;
-		// Returns the mapped template for a runtime clone. Non-clone nodes are returned
-		// unchanged; a clone missing from nodeCloneToTemplateMap returns nullptr.
-		[[nodiscard]] hkbNode* GetNodeTemplate(hkbNode* a_nodeClone) const;
+		// These functions are valid only for the root behavior graph.
+		void GetInternalStateOfGraph(hkbBehaviorGraphInternalState& a_internalState);                                       // The graph must be active and the state empty.
+		void ActivateWithInternalState(const hkbContext& a_context, const hkbBehaviorGraphInternalState& a_internalState);  // The graph must be inactive.
 
-		// These map-backed lookups cover the current active-node set. A missing or invalid
-		// entry returns nullptr instead of falling back to activeNodes[0].
-		[[nodiscard]] hkbNodeInfo*       FindNodeInfoByTemplate(hkbNode* a_nodeTemplate);
-		[[nodiscard]] const hkbNodeInfo* FindNodeInfoByTemplate(hkbNode* a_nodeTemplate) const;
-		[[nodiscard]] hkbNodeInfo*       FindNodeInfoByClone(hkbNode* a_nodeClone);
-		[[nodiscard]] const hkbNodeInfo* FindNodeInfoByClone(hkbNode* a_nodeClone) const;
+		// Returns the runtime clone for a template, or the input node when no clone is required.
+		hkbNode* GetNodeClone(hkbNode* a_nodeTemplate) const;
+		// Returns the template for a runtime clone, or nullptr when unmapped.
+		hkbNode* GetNodeTemplate(hkbNode* a_nodeClone) const;
+		// Returns active-node information for a template or clone, or nullptr when unmapped.
+		hkbNodeInfo*       FindNodeInfoByTemplate(hkbNode* a_nodeTemplate);
+		const hkbNodeInfo* FindNodeInfoByTemplate(hkbNode* a_nodeTemplate) const;
+		hkbNodeInfo*       FindNodeInfoByClone(hkbNode* a_nodeClone);
+		const hkbNodeInfo* FindNodeInfoByClone(hkbNode* a_nodeClone) const;
 
 		// members
 		REX::EnumSet<VariableMode, std::uint8_t> variableMode;                     // 048

@@ -8,12 +8,12 @@ namespace RE
 	public:
 		using size_type = std::int32_t;
 
-		[[nodiscard]] bool empty() const noexcept
+		bool empty() const noexcept
 		{
 			return elementsInUse == 0;
 		}
 
-		[[nodiscard]] size_type size() const noexcept
+		size_type size() const noexcept
 		{
 			return elementsInUse;
 		}

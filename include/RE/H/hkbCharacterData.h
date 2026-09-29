@@ -27,16 +27,16 @@ namespace RE
 		hkVector4                         modelUpMS;                       // 30
 		hkVector4                         modelForwardMS;                  // 40
 		hkVector4                         modelRightMS;                    // 50
-		hkArray<hkbVariableInfo>          characterPropertyInfos;         // 60
-		hkArray<std::int32_t>             numBonesPerLod;                 // 70
-		hkRefPtr<hkbVariableValueSet>     characterPropertyValues;        // 80
-		hkRefPtr<hkbFootIkDriverInfo>     footIkDriverInfo;               // 88
-		hkRefPtr<hkbHandIkDriverInfo>     handIkDriverInfo;               // 90
-		hkRefPtr<hkbCharacterStringData>  stringData;                     // 98
-		hkRefPtr<hkbMirroredSkeletonInfo> mirroredSkeletonInfo;           // A0
-		float                             scale;                          // A8
-		std::uint16_t                     numHands;                       // AC
-		std::uint16_t                     numFloatSlots;                  // AE
+		hkArray<hkbVariableInfo>          characterPropertyInfos;          // 60
+		hkArray<std::int32_t>             numBonesPerLod;                  // 70
+		hkRefPtr<hkbVariableValueSet>     characterPropertyValues;         // 80
+		hkRefPtr<hkbFootIkDriverInfo>     footIkDriverInfo;                // 88
+		hkRefPtr<hkbHandIkDriverInfo>     handIkDriverInfo;                // 90
+		hkRefPtr<hkbCharacterStringData>  stringData;                      // 98
+		hkRefPtr<hkbMirroredSkeletonInfo> mirroredSkeletonInfo;            // A0
+		float                             scale;                           // A8
+		std::uint16_t                     numHands;                        // AC
+		std::uint16_t                     numFloatSlots;                   // AE
 	};
 	static_assert(offsetof(hkbCharacterData, footIkDriverInfo) == 0x88);
 	static_assert(offsetof(hkbCharacterData, handIkDriverInfo) == 0x90);

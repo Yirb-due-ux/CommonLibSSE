@@ -20,14 +20,14 @@ namespace RE
 
 		// add
 		virtual void Generate(
-			const hkbContext& a_context,
+			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
-			hkbGeneratorOutput& a_output,
-			float a_timeOffset = 0.0f) const = 0;                       // 17
-		virtual bool CanRecycleOutput(void) const;                     // 18 - { return false; }
+			hkbGeneratorOutput&        a_output,
+			float                      a_timeOffset = 0.0f) const = 0;              // 17
+		virtual bool CanRecycleOutput(void) const;                                  // 18 - { return false; }
 		virtual void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info);  // 19
-		virtual void SetLocalTime(float a_time);                        // 1A
-		virtual void StartEcho(void);                                   // 1B
+		virtual void SetLocalTime(float a_time);                                    // 1A
+		virtual void StartEcho(void);                                               // 1B
 	};
 	static_assert(sizeof(hkbGenerator) == 0x48);
 }

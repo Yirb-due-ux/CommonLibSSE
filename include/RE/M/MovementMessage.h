@@ -20,11 +20,11 @@ namespace RE
 		virtual ~MovementMessage();  // 00
 
 		// add
-		[[nodiscard]] virtual std::uint32_t GetType() const = 0;                                  // 01
-		virtual void                        Write(BSPathingStreamWrite& a_stream) const = 0;       // 02
-		virtual void                        Read(BSPathingStreamRead& a_stream) = 0;               // 03
-		virtual void                        FixupNumericID(void* a_numericIDMap);                   // 04
-		[[nodiscard]] virtual IPathFollowerAction* GetPathFollowerActionInterface();              // 05
+		virtual std::uint32_t        GetType() const = 0;                              // 01
+		virtual void                 Write(BSPathingStreamWrite& a_stream) const = 0;  // 02
+		virtual void                 Read(BSPathingStreamRead& a_stream) = 0;          // 03
+		virtual void                 FixupNumericID(void* a_numericIDMap);             // 04
+		virtual IPathFollowerAction* GetPathFollowerActionInterface();                 // 05
 	};
 	static_assert(sizeof(MovementMessage) == 0x10);
 }

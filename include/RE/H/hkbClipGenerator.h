@@ -59,7 +59,7 @@ namespace RE
 			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
 			hkbGeneratorOutput&        a_output,
-			float                      a_timeOffset = 0.0f) const override;                               // 17
+			float                      a_timeOffset = 0.0f) const override;          // 17
 		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
 		void SetLocalTime(float a_time) override;                                    // 1A
 		void StartEcho(void) override;                                               // 1B

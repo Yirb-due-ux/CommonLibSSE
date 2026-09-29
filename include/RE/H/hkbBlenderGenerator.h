@@ -48,10 +48,10 @@ namespace RE
 		void Update(const hkbContext& a_context, float a_timestep) override;  // 05
 		void Deactivate(const hkbContext& a_context) override;                // 07
 		void Generate(
-			const hkbContext& a_context,
+			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
-			hkbGeneratorOutput& a_output,
-			float a_timeOffset = 0.0f) const override;                                // 17
+			hkbGeneratorOutput&        a_output,
+			float                      a_timeOffset = 0.0f) const override;          // 17
 		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
 
 		// members
@@ -64,15 +64,15 @@ namespace RE
 		bool                               subtractLastChild;             // 05C
 		std::uint8_t                       pad05D;                        // 05D
 		std::uint16_t                      pad05E;                        // 05E
-		hkArray<hkbBlenderGeneratorChild*> children;                     // 060
-		hkRefVariant                       childrenInternalStates;       // 070
-		hkRefVariant                       sortedChildren;               // 078
+		hkArray<hkbBlenderGeneratorChild*> children;                      // 060
+		hkRefVariant                       childrenInternalStates;        // 070
+		hkRefVariant                       sortedChildren;                // 078
 		float                              endIntervalWeight;             // 080
-		std::int32_t                       numActiveChildren;            // 084
-		std::int16_t                       beginIntervalIndex;           // 088
-		std::int16_t                       endIntervalIndex;             // 08A
-		bool                               initSync;                     // 08C
-		bool                               doSubtractiveBlend;           // 08D
+		std::int32_t                       numActiveChildren;             // 084
+		std::int16_t                       beginIntervalIndex;            // 088
+		std::int16_t                       endIntervalIndex;              // 08A
+		bool                               initSync;                      // 08C
+		bool                               doSubtractiveBlend;            // 08D
 		std::uint16_t                      pad08E;                        // 08E
 	};
 	static_assert(offsetof(hkbBlenderGenerator, blendParameter) == 0x04C);

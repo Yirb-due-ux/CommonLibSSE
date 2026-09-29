@@ -1053,6 +1053,7 @@ set(SOURCES
 	include/RE/H/hkbAssetBundleStringData.h
 	include/RE/H/hkbBehaviorGraph.h
 	include/RE/H/hkbBehaviorGraphData.h
+	include/RE/H/hkbBehaviorGraphInternalState.h
 	include/RE/H/hkbBehaviorGraphStringData.h
 	include/RE/H/hkbBindable.h
 	include/RE/H/hkbBoneWeightArray.h
@@ -1079,6 +1080,7 @@ set(SOURCES
 	include/RE/H/hkbModifierGenerator.h
 	include/RE/H/hkbNode.h
 	include/RE/H/hkbNodeInfo.h
+	include/RE/H/hkbNodeInternalStateInfo.h
 	include/RE/H/hkbProjectData.h
 	include/RE/H/hkbProjectStringData.h
 	include/RE/H/hkbRagdollDriver.h
@@ -1092,6 +1094,7 @@ set(SOURCES
 	include/RE/H/hkbStateMachine.h
 	include/RE/H/hkbSymbolIdMap.h
 	include/RE/H/hkbTransitionEffect.h
+	include/RE/H/hkbVariableValueSet.h
 	include/RE/H/hkp3AxisSweep.h
 	include/RE/H/hkpAabbPhantom.h
 	include/RE/H/hkpAction.h
@@ -2075,6 +2078,7 @@ set(SOURCES
 	src/RE/H/hkStringPtr.cpp
 	src/RE/H/hkVector4.cpp
 	src/RE/H/hkbBehaviorGraph.cpp
+	src/RE/H/hkbBehaviorGraphInternalState.cpp
 	src/RE/H/hkbBlendCurveUtils.cpp
 	src/RE/H/hkbBlendingTransitionEffectUtils.cpp
 	src/RE/H/hkpAabbPhantom.cpp

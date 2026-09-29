@@ -36,9 +36,7 @@ namespace RE
 		~BGSGamebryoSequenceGenerator() override;  // 00
 
 		// override (hkbNode)
-		// Resets time and defers sequence activation until Update.
-		void Activate(const hkbContext& a_context) override;  // 04
-		// Advances the sequence and queues text-key events.
+		void                          Activate(const hkbContext& a_context) override;                  // 04
 		void                          Update(const hkbContext& a_context, float a_timestep) override;  // 05
 		void                          Deactivate(const hkbContext& a_context) override;                // 07
 		bool                          IsValid(hkStringPtr& a_errorString) const override;              // 0A - requires pSequence
@@ -49,21 +47,16 @@ namespace RE
 			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
 			hkbGeneratorOutput&        a_output,
-			float                      a_timeOffset = 0.0f) const override;                               // 17
+			float                      a_timeOffset = 0.0f) const override;          // 17
 		bool CanRecycleOutput() const override;                                      // 18 - { return true; }
 		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
 		void SetLocalTime(float a_time) override;                                    // 1A
 
-		// Runtime bridge to the Gamebryo controller sequence. This is a non-owning
-		// pointer stored in hkbNode::userData after delayed activation. Deactivation
-		// does not clear it, so a non-null result does not by itself mean active.
-		[[nodiscard]] NiControllerSequence* GetControllerSequence() const noexcept
+		NiControllerSequence* GetControllerSequence() const noexcept
 		{
 			return reinterpret_cast<NiControllerSequence*>(userData);
 		}
 
-		// Skyrim SE 1.5.97 layout. Only pSequence, eBlendModeFunction, and fPercent are serialized;
-		// the remaining members are runtime state.
 		// members
 		char*                                         pSequence;           // 48 - NiControllerSequence name, not a file path.
 		REX::EnumSet<BlendModeFunction, std::uint8_t> eBlendModeFunction;  // 50

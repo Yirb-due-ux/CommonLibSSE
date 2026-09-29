@@ -14,13 +14,13 @@ namespace RE
 
 		~hkbSymbolIdMap() override;  // 00
 
-		[[nodiscard]] std::int32_t GetExternal(std::int32_t a_internal) const
+		std::int32_t GetExternal(std::int32_t a_internal) const
 		{
 			// Native behavior requires every non-negative internal ID to be a valid array index.
 			return a_internal < 0 ? a_internal : internalToExternalMap[a_internal];
 		}
 
-		[[nodiscard]] std::int32_t GetInternal(std::int32_t a_external) const noexcept
+		std::int32_t GetInternal(std::int32_t a_external) const noexcept
 		{
 			if (a_external < 0) {
 				return a_external;

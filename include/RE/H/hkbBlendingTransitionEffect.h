@@ -63,7 +63,7 @@ namespace RE
 			const hkbContext&          a_context,
 			const hkbGeneratorOutput** a_activeChildrenOutput,
 			hkbGeneratorOutput&        a_output,
-			float                      a_timeOffset = 0.0f) const override;                               // 17
+			float                      a_timeOffset = 0.0f) const override;          // 17
 		bool CanRecycleOutput(void) const override;                                  // 18
 		void UpdateSync(const hkbContext& a_context, hkbNodeInfo& a_info) override;  // 19
 

@@ -1,5 +1,7 @@
 #include "RE/H/hkbBehaviorGraph.h"
 
+#include "RE/H/hkbBehaviorGraphInternalState.h"
+
 namespace RE
 {
 	hkbNode* hkbBehaviorGraph::GetNodeClone(hkbNode* a_nodeTemplate) const
@@ -44,5 +46,19 @@ namespace RE
 
 		auto* nodeTemplate = GetNodeTemplate(a_nodeClone);
 		return nodeTemplate ? FindNodeInfoByTemplate(nodeTemplate) : nullptr;
+	}
+
+	void hkbBehaviorGraph::GetInternalStateOfGraph(hkbBehaviorGraphInternalState& a_internalState)
+	{
+		using func_t = decltype(&hkbBehaviorGraph::GetInternalStateOfGraph);
+		static REL::Relocation<func_t> func{ REL::ID(57799) };
+		return func(this, a_internalState);
+	}
+
+	void hkbBehaviorGraph::ActivateWithInternalState(const hkbContext& a_context, const hkbBehaviorGraphInternalState& a_internalState)
+	{
+		using func_t = decltype(&hkbBehaviorGraph::ActivateWithInternalState);
+		static REL::Relocation<func_t> func{ REL::ID(57800) };
+		return func(this, a_context, a_internalState);
 	}
 }

@@ -18,8 +18,8 @@ namespace RE
 
 		// add
 		virtual void Unk_01(const BSPathingLocation& a_location, const NiPoint3& a_position) = 0;  // 01 - Queues a warp record ordered against queued movement messages.
-		virtual void Unk_02(const MovementMessagePtr& a_message) = 0;                             // 02 - Retains and queues the message for controller processing.
-		virtual void Unk_03(const MovementMessage& a_message) = 0;                               // 03 - Synchronously dispatches the message without retaining it.
+		virtual void Unk_02(const MovementMessagePtr& a_message) = 0;                              // 02 - Retains and queues the message for controller processing.
+		virtual void Unk_03(const MovementMessage& a_message) = 0;                                 // 03 - Synchronously dispatches the message without retaining it.
 	};
 	static_assert(sizeof(IMovementMessageInterface) == 0x8);
 }

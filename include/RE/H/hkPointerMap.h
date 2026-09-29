@@ -17,7 +17,7 @@ namespace RE
 		};
 		static_assert(sizeof(Pair) == 0x10);
 
-		[[nodiscard]] Value GetWithDefault(Key a_key, Value a_default) const noexcept
+		Value GetWithDefault(Key a_key, Value a_default) const noexcept
 		{
 			static_assert(std::is_integral_v<Key> || std::is_pointer_v<Key>);
 			static_assert(std::is_integral_v<Value> || std::is_pointer_v<Value>);
@@ -39,7 +39,7 @@ namespace RE
 			return a_default;
 		}
 
-		[[nodiscard]] size_type size() const noexcept
+		size_type size() const noexcept
 		{
 			return sizeAndFlags & 0x7FFFFFFF;
 		}
@@ -51,7 +51,7 @@ namespace RE
 
 	private:
 		template <class T>
-		[[nodiscard]] static std::uint64_t ToStorage(T a_value) noexcept
+		static std::uint64_t ToStorage(T a_value) noexcept
 		{
 			if constexpr (std::is_pointer_v<T>) {
 				return reinterpret_cast<std::uintptr_t>(a_value);
@@ -63,7 +63,7 @@ namespace RE
 		}
 
 		template <class T>
-		[[nodiscard]] static T FromStorage(std::uint64_t a_value) noexcept
+		static T FromStorage(std::uint64_t a_value) noexcept
 		{
 			if constexpr (std::is_pointer_v<T>) {
 				return reinterpret_cast<T>(static_cast<std::uintptr_t>(a_value));

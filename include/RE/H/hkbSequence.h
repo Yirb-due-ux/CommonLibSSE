@@ -24,29 +24,18 @@ namespace RE
 
 		~hkbSequence() override;  // 00
 
-		// Resets time and all four sampling cursors. The sequence starts enabled
-		// when no enable event is configured.
 		void Activate(const hkbContext& a_context) override;  // 04
 
-		// While enabled, advances time and updates every event and variable track.
 		void Update(const hkbContext& a_context, float a_timestep) override;  // 05
 
-		// Maps the incoming event when an event ID map exists, then applies the
-		// configured enable or disable event. Enabling also resets time to zero.
 		void HandleEvent(const hkbContext& a_context, hkbEvent& a_event) override;  // 06
 
-		// Shares referenced sequence data and ID maps, then resets the runtime sampling state.
-		// Native allocation; the caller receives one reference.
-		[[nodiscard]] hkbSequence* CloneNode(hkbBehaviorGraph& a_rootBehavior) const override;  // 0C
+		hkbSequence* CloneNode(hkbBehaviorGraph& a_rootBehavior) const override;  // 0C
 
-		// Native allocation; the caller receives one reference.
-		// This function does not initialize the scalar state fields; GetInternalState does.
-		[[nodiscard]] hkbSequenceInternalState* CreateInternalState() override;  // 0D
+		hkbSequenceInternalState* CreateInternalState() override;  // 0D
 
-		// Copies all playback state: four sampling cursors, time, and enable state.
 		void GetInternalState(hkReferencedObject& a_internalState) const override;  // 0E
 
-		// Restores all playback state captured by GetInternalState.
 		void SetInternalState(const hkReferencedObject& a_internalState) override;  // 10
 
 		// members

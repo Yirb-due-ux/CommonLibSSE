@@ -75,14 +75,14 @@ namespace RE
 		virtual void                GetInternalStateUser(const hkbBehaviorGraph& a_rootBehavior, hkReferencedObject& a_internalState) const;  // 0F - { return; }
 		virtual void                SetInternalState(const hkReferencedObject& a_internalState);                                              // 10 - { return; }
 		virtual void                SetInternalStateUser(
-						   const hkbContext&                                            a_context,
-						   const hkReferencedObject&                                    a_internalState,
-						   hkPointerMap<std::int16_t, const hkbNodeInternalStateInfo*>& a_nodeIdToInternalStateMap);  // 11 - { return; }
-		virtual void GetActiveEvents(hkPointerMap<std::int32_t, bool>& a_activeEvents) const;                         // 12 - { return; }
-		virtual bool IsTransitionEffect(void) const;                                                                  // 13 - { return false; }
-		virtual void GetActiveVariablesSpecial(hkPointerMap<std::int32_t, bool>& a_activeVariables) const;            // 14 - { return; }
-		virtual bool IsGenerator(void) const;                                                                         // 15 - { return false; }
-		virtual bool IsGraph(void) const;                                                                             // 16 - { return false; }
+			const hkbContext&                                            a_context,
+			const hkReferencedObject&                                    a_internalState,
+			hkPointerMap<std::int16_t, const hkbNodeInternalStateInfo*>& a_nodeIdToInternalStateMap);       // 11 - { return; }
+		virtual void GetActiveEvents(hkPointerMap<std::int32_t, bool>& a_activeEvents) const;               // 12 - { return; }
+		virtual bool IsTransitionEffect(void) const;                                                        // 13 - { return false; }
+		virtual void GetActiveVariablesSpecial(hkPointerMap<std::int32_t, bool>& a_activeVariables) const;  // 14 - { return; }
+		virtual bool IsGenerator(void) const;                                                               // 15 - { return false; }
+		virtual bool IsGraph(void) const;                                                                   // 16 - { return false; }
 
 		enum class CloneState
 		{

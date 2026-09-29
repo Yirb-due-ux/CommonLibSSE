@@ -9,7 +9,7 @@ namespace RE
 	class hkbEventQueue
 	{
 	public:
-		[[nodiscard]] std::int32_t ConvertID(std::int32_t a_id) const
+		std::int32_t ConvertID(std::int32_t a_id) const
 		{
 			if (!eventIdMap) {
 				return a_id;
