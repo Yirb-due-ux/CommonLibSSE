@@ -31,6 +31,7 @@ namespace RE
 	class hkpPhantom;
 	class hkpPhantomBroadPhaseListener;
 	class hkpPhantomListener;
+	class hkpRigidBody;
 	class hkpSimulation;
 	class hkpSimulationIsland;
 	class hkpTreeWorldManager;
