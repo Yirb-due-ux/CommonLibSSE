@@ -100,6 +100,23 @@ namespace RE
 
 		inline void GetPosition(hkVector4& a_pos, bool a_applyCenterOffset) const { return GetPositionImpl(a_pos, a_applyCenterOffset); }
 
+#ifndef SKYRIM_SUPPORT_AE
+		// SE 1.5.97
+		void RequestJump(float a_height)
+		{
+			using func_t = decltype(&bhkCharacterController::RequestJump);
+			static REL::Relocation<func_t> func{ REL::ID(76423) };
+			func(this, a_height);
+		}
+
+		void ApplyRequestedState()
+		{
+			using func_t = decltype(&bhkCharacterController::ApplyRequestedState);
+			static REL::Relocation<func_t> func{ REL::ID(76440) };
+			func(this);
+		}
+#endif
+
 		static bool IsHurtfulBody(hkpRigidBody* a_body)
 		{
 			using func_t = decltype(&bhkCharacterController::IsHurtfulBody);
@@ -136,7 +153,7 @@ namespace RE
 		hkpSurfaceInfo                                         surfaceInfo;                // 1A0
 		hkpCharacterContext                                    context;                    // 1E0
 		REX::EnumSet<CHARACTER_FLAGS, std::uint32_t>           flags;                      // 218
-		hkpCharacterStateType                                  wantState;                  // 218
+		hkpCharacterStateType                                  wantState;                  // 21C
 		float                                                  velocityTime;               // 220
 		float                                                  rotMod;                     // 224
 		float                                                  rotModTime;                 // 228

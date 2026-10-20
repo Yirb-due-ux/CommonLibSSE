@@ -3,7 +3,9 @@
 #include "RE/H/hkArray.h"
 #include "RE/H/hkContactPoint.h"
 #include "RE/H/hkReferencedObject.h"
+#include "RE/H/hkStepInfo.h"
 #include "RE/H/hkVector4.h"
+#include "RE/H/hkpCharacterControl.h"
 #include "RE/H/hkpEntityListener.h"
 #include "RE/H/hkpWorldPostSimulationListener.h"
 
@@ -49,6 +51,16 @@ namespace RE
 		virtual void                           CheckSupport(const hkStepInfo& a_stepInfo, hkpSurfaceInfo& a_ground);                                                   // 03
 		virtual hkpSurfaceInfo::SupportedState GetSupportInfo(const hkStepInfo& a_stepInfo, hkArray<SupportInfo>& a_supportInfo) const;                                // 04
 		virtual void                           GetGround(const hkArray<SupportInfo>& a_supportInfo, bool a_useDynamicBodyVelocities, hkpSurfaceInfo& a_ground) const;  // 05
+
+#ifndef SKYRIM_SUPPORT_AE
+		// SE 1.5.97
+		void SetLinearVelocity(const hkVector4& a_velocity, float a_timestep)
+		{
+			using func_t = decltype(&hkpCharacterRigidBody::SetLinearVelocity);
+			static REL::Relocation<func_t> func{ REL::ID(61559) };
+			func(this, a_velocity, a_timestep);
+		}
+#endif
 
 		// members
 		hkpRigidBody*                  character;                    // 20
