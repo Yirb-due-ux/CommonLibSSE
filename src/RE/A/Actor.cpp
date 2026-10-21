@@ -1190,6 +1190,29 @@ namespace RE
 		}
 	}
 
+#ifndef SKYRIM_SUPPORT_AE
+	void Actor::SetPositionFromController(const NiPoint3& a_position)
+	{
+		using func_t = decltype(&Actor::SetPositionFromController);
+		static REL::Relocation<func_t> func{ SetPositionFromControllerID };
+		func(this, a_position);
+	}
+
+	void Actor::UpdateMovement(float a_delta)
+	{
+		using func_t = decltype(&Actor::UpdateMovement);
+		static REL::Relocation<func_t> func{ UpdateMovementID };
+		func(this, a_delta);
+	}
+
+	void Actor::ProcessMovement(float a_delta)
+	{
+		using func_t = decltype(&Actor::ProcessMovement);
+		static REL::Relocation<func_t> func{ ProcessMovementID };
+		func(this, a_delta);
+	}
+#endif
+
 	bool Actor::SetSleepOutfit(BGSOutfit* a_outfit, bool a_update3D)
 	{
 		const auto npc = GetActorBase();

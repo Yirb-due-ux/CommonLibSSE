@@ -66,7 +66,9 @@ namespace RE
 
 #ifndef SKYRIM_SUPPORT_AE
 		// SE 1.5.97
-		inline static constexpr REL::ID ApproxTransformAtID{ 60198 };
+		inline static constexpr REL::ID     ApproxTransformAtID{ 60198 };
+		inline static constexpr REL::ID     SetLinearVelocityID{ 60200 };
+		inline static constexpr std::size_t SetLinearVelocitySlot = 0x10;
 
 		void ApproxTransformAt(float a_time, hkTransform& a_transformOut)
 		{

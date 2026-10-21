@@ -138,8 +138,8 @@ namespace RE
 		public MagicTarget,                                // 0A0
 		public ActorValueOwner,                            // 0B8
 		public ActorState,                                 // 0C0
-		public BSTEventSink<BSTransformDeltaEvent>,        // 0D0
-		public BSTEventSink<bhkCharacterMoveFinishEvent>,  // 0D8
+		public BSTEventSink<BSTransformDeltaEvent>,        // 0C8 (SE), 0D0 (AE)
+		public BSTEventSink<bhkCharacterMoveFinishEvent>,  // 0D0 (SE), 0D8 (AE)
 		public IPostAnimationChannelUpdateFunctor          // 0E0
 	{
 	private:
@@ -148,6 +148,19 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Actor;
 		inline static constexpr auto VTABLE = VTABLE_Actor;
+
+#ifndef SKYRIM_SUPPORT_AE
+		// SE 1.5.97
+		inline static constexpr REL::ID     MoveID{ 36507 };
+		inline static constexpr REL::ID     MoveFinishEventHandlerID{ 36973 };  // BSTEventSink<bhkCharacterMoveFinishEvent>* receiver
+		inline static constexpr REL::ID     SetPositionFromControllerID{ 42528 };
+		inline static constexpr REL::ID     UpdateMovementID{ 36359 };
+		inline static constexpr REL::ID     ProcessMovementID{ 36365 };
+		inline static constexpr std::size_t MoveSlot = 0xC8;
+		void                                SetPositionFromController(const NiPoint3& a_position);
+		void                                UpdateMovement(float a_delta);
+		void                                ProcessMovement(float a_delta);
+#endif
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		struct SlotTypes

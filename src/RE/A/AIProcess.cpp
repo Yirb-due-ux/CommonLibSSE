@@ -12,6 +12,15 @@
 
 namespace RE
 {
+#ifndef SKYRIM_SUPPORT_AE
+	const NiPoint3* AIProcess::GetAnimationDelta() const
+	{
+		using func_t = decltype(&AIProcess::GetAnimationDelta);
+		static REL::Relocation<func_t> func{ GetAnimationDeltaID };
+		return func(this);
+	}
+#endif
+
 	void AIProcess::AddToProcedureIndexRunning(Actor* a_actor, std::uint32_t a_num)
 	{
 		using func_t = decltype(&AIProcess::AddToProcedureIndexRunning);

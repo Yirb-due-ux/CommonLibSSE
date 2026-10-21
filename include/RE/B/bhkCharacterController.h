@@ -103,10 +103,15 @@ namespace RE
 
 #ifndef SKYRIM_SUPPORT_AE
 		// SE 1.5.97
-		inline static constexpr REL::ID RequestJumpID{ 76423 };
-		inline static constexpr REL::ID ApplyRequestedStateID{ 76440 };
-		inline static constexpr REL::ID UpdateMovementID{ 76436 };
-		void                            RequestJump(float a_height)
+		using MoveFinishEventSource = BSTEventSource<bhkCharacterMoveFinishEvent>;
+		inline static constexpr REL::ID     MoveFinishEventSendID{ 37374 };  // MoveFinishEventSource* receiver
+		inline static constexpr std::size_t GetPositionSlot = 0x02;
+		inline static constexpr std::size_t SetLinearVelocitySlot = 0x07;
+		inline static constexpr std::size_t Unk0BSlot = 0x0B;
+		inline static constexpr REL::ID     RequestJumpID{ 76423 };
+		inline static constexpr REL::ID     ApplyRequestedStateID{ 76440 };
+		inline static constexpr REL::ID     UpdateMovementID{ 76436 };
+		void                                RequestJump(float a_height)
 		{
 			using func_t = decltype(&bhkCharacterController::RequestJump);
 			static REL::Relocation<func_t> func{ RequestJumpID };

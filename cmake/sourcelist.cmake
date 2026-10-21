@@ -111,6 +111,7 @@ set(SOURCES
 	include/RE/B/BGSEquipSlot.h
 	include/RE/B/BGSEquipType.h
 	include/RE/B/BGSExplosion.h
+	include/RE/B/BGSFootIkRaycastInterfaceDB.h
 	include/RE/B/BGSFootstep.h
 	include/RE/B/BGSFootstepEvent.h
 	include/RE/B/BGSFootstepManager.h
@@ -1179,6 +1180,7 @@ set(SOURCES
 	include/RE/H/hkpShapeRayCastInput.h
 	include/RE/H/hkpShapeRayCastOutput.h
 	include/RE/H/hkpShapeType.h
+	include/RE/H/hkpSimpleCollisionResponse.h
 	include/RE/H/hkpSimpleShapePhantom.h
 	include/RE/H/hkpSimpleWorldRayCaster.h
 	include/RE/H/hkpSimplexSolver.h
@@ -1921,6 +1923,7 @@ set(SOURCES
 	src/RE/B/BGSDebris.cpp
 	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	src/RE/B/BGSEntryPointPerkEntry.cpp
+	src/RE/B/BGSFootIkRaycastInterfaceDB.cpp
 	src/RE/B/BGSFootstepManager.cpp
 	src/RE/B/BGSHeadPart.cpp
 	src/RE/B/BGSIdleCollection.cpp

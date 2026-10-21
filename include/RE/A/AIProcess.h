@@ -105,6 +105,12 @@ namespace RE
 	class AIProcess
 	{
 	public:
+#ifndef SKYRIM_SUPPORT_AE
+		// SE 1.5.97
+		inline static constexpr REL::ID GetAnimationDeltaID{ 38569 };
+		const NiPoint3*                 GetAnimationDelta() const;
+#endif
+
 		enum class LowProcessFlags : std::uint8_t
 		{
 			kNone = 0,

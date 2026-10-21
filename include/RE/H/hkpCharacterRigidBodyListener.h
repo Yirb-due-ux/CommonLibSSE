@@ -18,6 +18,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpCharacterRigidBodyListener;
 		inline static constexpr auto VTABLE = VTABLE_hkpCharacterRigidBodyListener;
 
+#ifndef SKYRIM_SUPPORT_AE
+		inline static constexpr std::size_t CharacterCallbackSlot = 0x03;
+#endif
+
 		virtual ~hkpCharacterRigidBodyListener() override;  //00
 
 		virtual void CharacterCallback(hkpWorld* a_world, hkpCharacterRigidBody* a_characterRB);                                                                                                                                                                 // 03
