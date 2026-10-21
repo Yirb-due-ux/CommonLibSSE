@@ -64,6 +64,18 @@ namespace RE
 		virtual void ApplyTorque(const float a_deltaTime, const hkVector4& a_torque) = 0;                                                                 // 18
 		virtual void GetMotionStateAndVelocitiesAndDeactivationType(hkpMotion* a_motionOut);                                                              // 19
 
+#ifndef SKYRIM_SUPPORT_AE
+		// SE 1.5.97
+		inline static constexpr REL::ID ApproxTransformAtID{ 60198 };
+
+		void ApproxTransformAt(float a_time, hkTransform& a_transformOut)
+		{
+			using func_t = decltype(&hkpMotion::ApproxTransformAt);
+			static REL::Relocation<func_t> func{ ApproxTransformAtID };
+			func(this, a_time, a_transformOut);
+		}
+#endif
+
 		float GetMass() const
 		{
 			float massInv = _mm_cvtss_f32(_mm_shuffle_ps(inertiaAndMassInv.quad, inertiaAndMassInv.quad, 3));

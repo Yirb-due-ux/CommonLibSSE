@@ -54,10 +54,11 @@ namespace RE
 
 #ifndef SKYRIM_SUPPORT_AE
 		// SE 1.5.97
-		void SetLinearVelocity(const hkVector4& a_velocity, float a_timestep)
+		inline static constexpr REL::ID SetLinearVelocityID{ 61559 };
+		void                            SetLinearVelocity(const hkVector4& a_velocity, float a_timestep)
 		{
 			using func_t = decltype(&hkpCharacterRigidBody::SetLinearVelocity);
-			static REL::Relocation<func_t> func{ REL::ID(61559) };
+			static REL::Relocation<func_t> func{ SetLinearVelocityID };
 			func(this, a_velocity, a_timestep);
 		}
 #endif

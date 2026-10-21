@@ -9,6 +9,8 @@
 
 namespace RE
 {
+	class hkJobQueue;
+	class hkJobThreadPool;
 	class hkCriticalSection;
 	class hkdWorld;
 	class hknpWorld;
@@ -99,6 +101,26 @@ namespace RE
 			static REL::Relocation<func_t> func{ RELOCATION_ID(60554, 61402) };
 			return func(this, a_colA, a_input, a_castCollector, a_startCollector);
 		}
+
+#ifndef SKYRIM_SUPPORT_AE
+		// SE 1.5.97
+		inline static constexpr REL::ID StepDeltaTimeID{ 60562 };
+		inline static constexpr REL::ID StepMultithreadedID{ 60569 };
+
+		std::uint32_t StepDeltaTime(float a_deltaTime)
+		{
+			using func_t = decltype(&hkpWorld::StepDeltaTime);
+			static REL::Relocation<func_t> func{ StepDeltaTimeID };
+			return func(this, a_deltaTime);
+		}
+
+		std::uint32_t StepMultithreaded(hkJobQueue* a_queue, hkJobThreadPool* a_pool, float a_deltaTime)
+		{
+			using func_t = decltype(&hkpWorld::StepMultithreaded);
+			static REL::Relocation<func_t> func{ StepMultithreadedID };
+			return func(this, a_queue, a_pool, a_deltaTime);
+		}
+#endif
 
 		// members
 		hkpSimulation*                                                    simulation;                                                 // 010

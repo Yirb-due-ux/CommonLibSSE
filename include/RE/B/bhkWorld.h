@@ -33,11 +33,19 @@ namespace RE
 		virtual void          Unk_2F(void) override;                                       // 2F
 
 		// add
-		virtual void Unk_32(void);                                              // 32
+#ifndef SKYRIM_SUPPORT_AE
+		virtual void Unk_32(std::uint32_t a_flags);  // 32
+#else
+		virtual void Unk_32(void);  // 32
+#endif
 		virtual bool PickObject(bhkPickData& a_pickData);                       // 33
 		virtual void Unk_34(void);                                              // 34
 		virtual void Unk_35(void);                                              // 35
 		virtual void InitHavok(NiAVObject* a_sceneObject, NiAVObject* a_root);  // 36
+
+#ifndef SKYRIM_SUPPORT_AE
+		inline static constexpr REL::ID Unk32ID{ 76018 };  // SE 1.5.97
+#endif
 
 		static float GetWorldScale()
 		{

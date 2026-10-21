@@ -465,6 +465,7 @@ set(SOURCES
 	include/RE/B/bhkCharProxyController.h
 	include/RE/B/bhkCharRigidBodyController.h
 	include/RE/B/bhkCharacterController.h
+	include/RE/B/bhkCharacterControllerMovement.h
 	include/RE/B/bhkCharacterPointCollector.h
 	include/RE/B/bhkCharacterProxy.h
 	include/RE/B/bhkCharacterRigidBody.h
@@ -1166,6 +1167,7 @@ set(SOURCES
 	include/RE/H/hkpRayHitCollector.h
 	include/RE/H/hkpRayShapeCollectionFilter.h
 	include/RE/H/hkpRigidBody.h
+	include/RE/H/hkpRigidMotionUtil.h
 	include/RE/H/hkpRootCdPoint.h
 	include/RE/H/hkpShape.h
 	include/RE/H/hkpShapeBuffer.h
@@ -1180,6 +1182,7 @@ set(SOURCES
 	include/RE/H/hkpSimpleShapePhantom.h
 	include/RE/H/hkpSimpleWorldRayCaster.h
 	include/RE/H/hkpSimplexSolver.h
+	include/RE/H/hkpSimulation.h
 	include/RE/H/hkpSimulationIsland.h
 	include/RE/H/hkpSingleShapeContainer.h
 	include/RE/H/hkpSolverInfo.h
@@ -1188,6 +1191,7 @@ set(SOURCES
 	include/RE/H/hkpSphereShape.h
 	include/RE/H/hkpTypedBroadPhaseHandle.h
 	include/RE/H/hkpUnaryAction.h
+	include/RE/H/hkpVelocityAccumulator.h
 	include/RE/H/hkpWeldingUtility.h
 	include/RE/H/hkpWorld.h
 	include/RE/H/hkpWorldCinfo.h

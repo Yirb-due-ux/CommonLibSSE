@@ -16,6 +16,7 @@
 
 namespace RE
 {
+	struct bhkCharacterControllerMovement;
 	class bhkCharacterMoveFinishEvent;
 	class bhkICharOrientationController;
 	class bhkRigidBody;
@@ -102,17 +103,27 @@ namespace RE
 
 #ifndef SKYRIM_SUPPORT_AE
 		// SE 1.5.97
-		void RequestJump(float a_height)
+		inline static constexpr REL::ID RequestJumpID{ 76423 };
+		inline static constexpr REL::ID ApplyRequestedStateID{ 76440 };
+		inline static constexpr REL::ID UpdateMovementID{ 76436 };
+		void                            RequestJump(float a_height)
 		{
 			using func_t = decltype(&bhkCharacterController::RequestJump);
-			static REL::Relocation<func_t> func{ REL::ID(76423) };
+			static REL::Relocation<func_t> func{ RequestJumpID };
 			func(this, a_height);
+		}
+
+		std::uint32_t UpdateMovement(bhkCharacterControllerMovement& a_movement)
+		{
+			using func_t = decltype(&bhkCharacterController::UpdateMovement);
+			static REL::Relocation<func_t> func{ UpdateMovementID };
+			return func(this, a_movement);
 		}
 
 		void ApplyRequestedState()
 		{
 			using func_t = decltype(&bhkCharacterController::ApplyRequestedState);
-			static REL::Relocation<func_t> func{ REL::ID(76440) };
+			static REL::Relocation<func_t> func{ ApplyRequestedStateID };
 			func(this);
 		}
 #endif
