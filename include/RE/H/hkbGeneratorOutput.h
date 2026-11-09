@@ -15,8 +15,18 @@
 
 namespace RE
 {
+	struct hkBitField;
+	class hkQsTransform;
+
 	struct hkbGeneratorOutput
 	{
+		enum class TrackId : std::int32_t
+		{
+			kWorldFromModel = 0,
+			kExtractedMotion = 1,
+			kPose = 2
+		};
+
 		enum class TrackType : std::int8_t
 		{
 			kReal = 0,
@@ -153,6 +163,23 @@ namespace RE
 			std::memcpy(std::addressof(totalBytes), a_buffer.data(), sizeof(totalBytes));
 			return DenseRealTrack(header, static_cast<std::size_t>(totalBytes));
 		}
+
+		std::int32_t GetNumBytes() const noexcept
+		{
+			std::int32_t size{};
+			if (tracks) {
+				std::memcpy(&size, tracks, sizeof(size));
+			}
+			return size;
+		}
+
+#ifndef SKYRIM_SUPPORT_AE
+		void CopyTracksFrom(const hkbGeneratorOutput& a_source);
+
+		static void BlendPoses(const hkQsTransform* a_from, const hkBitField* a_fromMask,
+			const hkQsTransform* a_to, const hkBitField* a_toMask, std::int32_t a_bones,
+			float a_weight, hkQsTransform* a_output, hkBitField* a_outputMask);
+#endif
 
 		// Skyrim SE 1.5.97 passes this 0x10 holder between generator and graph output paths.
 		Tracks*      tracks;        // 00

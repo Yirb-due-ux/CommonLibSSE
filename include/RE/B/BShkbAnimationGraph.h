@@ -42,6 +42,13 @@ namespace RE
 			uint32_t unk0C;
 		};
 
+		// The character must be the embedded instance of an engine-owned animation graph.
+		static const BShkbAnimationGraph* FromCharacterInstance(const hkbCharacter& a_character) noexcept
+		{
+			const auto* address = reinterpret_cast<const std::byte*>(std::addressof(a_character));
+			return reinterpret_cast<const BShkbAnimationGraph*>(address - offsetof(BShkbAnimationGraph, characterInstance));
+		}
+
 		~BShkbAnimationGraph() override;  // 00
 
 		// override (BSIRagdollDriver)

@@ -1012,6 +1012,10 @@ set(SOURCES
 	include/RE/H/hkArray.h
 	include/RE/H/hkBaseObject.h
 	include/RE/H/hkBaseTypes.h
+	include/RE/H/hkBitField.h
+	include/RE/H/hkBuiltinTypeRegistry.h
+	include/RE/H/hkClass.h
+	include/RE/H/hkClassMember.h
 	include/RE/H/hkContactPoint.h
 	include/RE/H/hkContactPointMaterial.h
 	include/RE/H/hkContainerAllocators.h
@@ -1041,6 +1045,7 @@ set(SOURCES
 	include/RE/H/hkStringPtr.h
 	include/RE/H/hkSweptTransform.h
 	include/RE/H/hkTransform.h
+	include/RE/H/hkTypeInfo.h
 	include/RE/H/hkVector4.h
 	include/RE/H/hkaAnimatedReferenceFrame.h
 	include/RE/H/hkaAnimation.h
@@ -2088,6 +2093,7 @@ set(SOURCES
 	src/RE/H/hkbBehaviorGraphInternalState.cpp
 	src/RE/H/hkbBlendCurveUtils.cpp
 	src/RE/H/hkbBlendingTransitionEffectUtils.cpp
+	src/RE/H/hkbGeneratorOutput.cpp
 	src/RE/H/hkpAabbPhantom.cpp
 	src/RE/H/hkpBroadPhase.cpp
 	src/RE/H/hkpCdBody.cpp

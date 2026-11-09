@@ -4,6 +4,7 @@
 #include "RE/H/hkQsTransform.h"
 #include "RE/H/hkbBlendCurveUtils.h"
 #include "RE/H/hkbTransitionEffect.h"
+#include "REL/Relocation.h"
 
 namespace RE
 {
@@ -43,6 +44,26 @@ namespace RE
 			kIgnoreToWorldFromModel = 1 << 2     // Use only the from-generator world-from-model.
 		};
 		using Flags = REX::EnumSet<FlagBits, std::uint16_t>;
+
+		// Verified transition-effect slots used for private table dispatch.
+		enum class Slot : std::size_t
+		{
+			kIsDone = 0x1C,
+			kIsSyncable = 0x21,
+			kToStarted = 0x22,
+			kUseFromOnly = 0x23,
+			kFromSyncInfo = 0x24,
+			kBlendDuration = 0x25,
+			kIsFirstFrame = 0x26
+		};
+
+#ifndef SKYRIM_SUPPORT_AE
+		static hkbBlendingTransitionEffect* CopyConstruct(void* a_storage, const hkbNode* a_source)
+		{
+			static REL::Relocation<decltype(&hkbBlendingTransitionEffect::CopyConstruct)> func{ REL::ID(59273) };
+			return func(a_storage, a_source);
+		}
+#endif
 
 		enum class EndMode
 		{

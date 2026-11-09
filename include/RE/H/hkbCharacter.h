@@ -7,6 +7,7 @@
 
 namespace RE
 {
+	class hkQsTransform;
 	class hkbBehaviorGraph;
 	class hkbCharacterSetup;
 	class hkbProjectData;
@@ -41,12 +42,13 @@ namespace RE
 		hkRefVariant                raycastInterface;           // 70
 		hkRefVariant                world;                      // 78
 		hkRefVariant                eventQueue;                 // 80
-		hkRefVariant                worldFromModel;             // 88
+		hkQsTransform*              worldFromModel;             // 88
 		const void**                poseLocal;                  // 90 - hkSimpleArray<hkRefVariant>
 		std::int32_t                numPoseLocal;               // 98
 		bool                        deleteWorldFromModel;       // 9C
 		bool                        deletePoseLocal;            // 9D
 		std::uint16_t               pad9E;                      // 9E
 	};
+	static_assert(offsetof(hkbCharacter, worldFromModel) == 0x88);
 	static_assert(sizeof(hkbCharacter) == 0xA0);
 }
