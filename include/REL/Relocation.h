@@ -214,6 +214,24 @@ namespace REL
 
 	void safe_fill(std::uintptr_t a_dst, std::uint8_t a_value, std::size_t a_count);
 
+	struct VFuncWriteResult
+	{
+		enum class Status : std::uint8_t
+		{
+			kSuccess,
+			kProtectFailed,
+			kRestoreFailed
+		};
+
+		std::uintptr_t previous;
+		Status         status;
+	};
+
+	namespace detail
+	{
+		VFuncWriteResult try_write_vfunc_at(std::uintptr_t a_slot, std::uintptr_t a_newFunc) noexcept;
+	}
+
 	template <class T = std::uintptr_t>
 	class Relocation
 	{
@@ -388,6 +406,20 @@ namespace REL
 			requires(std::same_as<value_type, std::uintptr_t>)
 		{
 			return write_vfunc(a_idx, stl::unrestricted_cast<std::uintptr_t>(a_newFunc));
+		}
+
+		// The slot must be readable. kRestoreFailed means the pointer was already written.
+		VFuncWriteResult try_write_vfunc(const std::size_t a_idx, const std::uintptr_t a_newFunc) noexcept
+			requires(std::same_as<value_type, std::uintptr_t>)
+		{
+			return detail::try_write_vfunc_at(address() + sizeof(void*) * a_idx, a_newFunc);
+		}
+
+		template <class F>
+		VFuncWriteResult try_write_vfunc(const std::size_t a_idx, const F a_newFunc) noexcept
+			requires(std::same_as<value_type, std::uintptr_t>)
+		{
+			return try_write_vfunc(a_idx, stl::unrestricted_cast<std::uintptr_t>(a_newFunc));
 		}
 
 	private:

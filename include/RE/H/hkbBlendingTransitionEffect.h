@@ -45,6 +45,13 @@ namespace RE
 		};
 		using Flags = REX::EnumSet<FlagBits, std::uint16_t>;
 
+		// SE 1.5.97 deleting destructor at 0x140A05EB0. When deletion is requested,
+		// this bit selects the fixed 0x90-byte free instead of the size in the object.
+		enum class DeletingDestructorFlag : std::uint32_t
+		{
+			kFreeFixedSize = 1 << 2
+		};
+
 		// Verified transition-effect slots used for private table dispatch.
 		enum class Slot : std::size_t
 		{
