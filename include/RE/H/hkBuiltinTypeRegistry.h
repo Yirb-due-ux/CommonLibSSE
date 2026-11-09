@@ -12,8 +12,11 @@ namespace RE
 	public:
 		const hkClass* Find(const char* a_name) const
 		{
-			static REL::Relocation<decltype(&hkClassNameRegistry::Find)> func{ REL::ID(59476) };
-			return func(this, a_name);
+			using func_t = const hkClass* (*)(const hkClassNameRegistry*, const char*);
+			const std::uintptr_t* table;
+			std::memcpy(&table, this, sizeof(table));
+			// Slot 4 selects the concrete class-name registry implementation.
+			return reinterpret_cast<func_t>(table[4])(this, a_name);
 		}
 	};
 
